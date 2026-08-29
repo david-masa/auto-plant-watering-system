@@ -40,7 +40,12 @@ add_executable(blink
     )
 
 # pull in common dependencies
-target_link_libraries(blink pico_stdlib)
+target_link_libraries(blink
+    pico_stdlib     #標準ライブラリ
+    hardware_pwm    #水やりポンプ制御
+    hardware_adc    #土壌湿度センサーのアナログ値読み取り
+    hardware_i2c    #液晶表示用
+)
 
 if (PICO_CYW43_SUPPORTED)
     target_link_libraries(blink pico_cyw43_arch_none)
@@ -48,5 +53,7 @@ endif()
 
 # create map/bin/hex file etc.
 pico_add_extra_outputs(blink)
+pico_enable_stdio_usb(blink 1)
+pico_enable_stdio_uart(blink 0)
 
 # add url via pico_set_program_url
