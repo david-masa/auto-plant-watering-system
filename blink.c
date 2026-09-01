@@ -31,6 +31,8 @@
 // GP15 HIGH → S8050 ON → INがGND → リレーON
 // GP15 LOW  → S8050 OFF → リレーOFF
 
+char buf[32];
+
 //関数を定義、短いためプロトタイプ宣言ではなくそのまま定義する
 void pump_on(void)
 {
@@ -56,9 +58,7 @@ int main()
     ssd1306_init(&disp, 128, 64, 0x3C, I2C_PORT);
     ssd1306_clear(&disp);
 
-    ssd1306_draw_string(&disp, 0, 0, 1, "Test");
 
-    ssd1306_show(&disp);
 
     // リレー制御用GPIO
     gpio_init(RELAY_PIN);
@@ -80,6 +80,11 @@ int main()
 
         uint16_t soil_value = adc_read();
 
+        ssd1306_clear(&disp); // 前の表示を一度消去
+
+        sprintf(buf, "Soil : %d", soil_value);
+
+        ssd1306_draw_string(&disp, 0, 0, 1, buf);
 
         // --------------------------
         // 乾燥判定
