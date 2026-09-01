@@ -37,6 +37,7 @@ pico_sdk_init()
 
 add_executable(blink
     blink.c
+    ssd1306.c
     )
 
 # pull in common dependencies

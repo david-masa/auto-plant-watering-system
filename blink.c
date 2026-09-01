@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include "pico/stdlib.h"    //picoの標準ライブラリ
 #include "hardware/adc.h"   //picoのADCライブラリ
+#include "hardware/i2c.h"   //picoのI2Cライブラリ
+#include "ssd1306.h"        //OLEDディスプレイ用ライブラリ (参照:https://github.com/daschr/pico-ssd1306)
+
+#define I2C_PORT i2c0       // 使用するI2C通信回路の指定（0番を使用）
+#define PIN_SDA 4           // GP4をSDAに使用
+#define PIN_SCL 5           // GP5をSCLに使用
 
 #define SOIL_ADC_PIN 26      // GP26 = ADC0
 #define RELAY_PIN    15      // GP15　トランジスタにつながっているが、役割を明確にするためにリレーと表記
@@ -39,6 +45,20 @@ void pump_off(void)
 int main()
 {
     stdio_init_all();
+    i2c_init(i2c0, 400 * 1000);     // I2C通信の初期化、400kHzで通信 
+    gpio_set_function(PIN_SDA, GPIO_FUNC_I2C);      //I2Cを使えるようにするための初期化
+    gpio_set_function(PIN_SCL, GPIO_FUNC_I2C);      //I2Cを使えるようにするための初期化
+    gpio_pull_up(PIN_SDA);      //内部抵抗を使ってプルアップする
+    gpio_pull_up(PIN_SCL);      //内部抵抗を使ってプルアップする
+
+    ssd1306_t disp;             //githubのexampleを参考
+    disp.external_vcc=false;
+    ssd1306_init(&disp, 128, 64, 0x3C, I2C_PORT);
+    ssd1306_clear(&disp);
+
+    ssd1306_draw_string(&disp, 0, 0, 1, "Test");
+
+    ssd1306_show(&disp);
 
     // リレー制御用GPIO
     gpio_init(RELAY_PIN);
@@ -49,7 +69,7 @@ int main()
 
     // ADC初期化
     adc_init();
-    adc_gpio_init(SOIL_ADC_PIN);
+    adc_gpio_init(SOIL_ADC_PIN);    //ADCを使えるようにするための初期化
     adc_select_input(0);
 
     while (true)
@@ -58,7 +78,7 @@ int main()
         // 土壌センサーを測定
         // --------------------------
 
-        uint16_t soil_value = read_soil_sensor();
+        uint16_t soil_value = adc_read();
 
 
         // --------------------------
