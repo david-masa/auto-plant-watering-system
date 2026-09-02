@@ -1,6 +1,6 @@
 
 # Raspberry Pi picoを使用した自動植物給水システム
-<img width="600" height="800" alt="overall" src="https://github.com/user-attachments/assets/dcc031c7-32a7-407d-b2d1-49b8b6ba00f1" />
+<img width="600" height="800" alt="overall" src="https://github.com/user-attachments/assets/dcc031c7-32a7-407d-b2d1-49b8b6ba00f1" /><br>
 ## 概要
 
 Raspberry Pi Picoと土壌湿度センサーを使用した<br>
@@ -48,7 +48,7 @@ DCDC昇圧モジュール<br>
 ブレッドボード<br>
 
 ## 配線
-<img width="800" height="600" alt="circuit" src="https://github.com/user-attachments/assets/cfb39c06-6532-4e87-a9ab-f8cff7c5984e" />
+<img width="800" height="600" alt="circuit" src="https://github.com/user-attachments/assets/cfb39c06-6532-4e87-a9ab-f8cff7c5984e" /><br>
 
 | ピン番号 | 接続先 |
 |---:|---|
