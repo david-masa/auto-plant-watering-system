@@ -56,8 +56,9 @@ int main()
     ssd1306_t disp;             //githubのexampleを参考
     disp.external_vcc=false;
     ssd1306_init(&disp, 128, 64, 0x3C, I2C_PORT);
-    ssd1306_clear(&disp);
 
+    ssd1306_clear(&disp);
+    ssd1306_show(&disp);
 
 
     // リレー制御用GPIO
@@ -82,9 +83,11 @@ int main()
 
         ssd1306_clear(&disp); // 前の表示を一度消去
 
-        sprintf(buf, "Soil : %d", soil_value);
+        sprintf(buf, "Soil: %d", soil_value);
 
-        ssd1306_draw_string(&disp, 0, 0, 1, buf);
+        ssd1306_draw_string(&disp, 0, 0, 2, buf);
+
+        ssd1306_show(&disp);
 
         // --------------------------
         // 乾燥判定
