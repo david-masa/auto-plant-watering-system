@@ -27,13 +27,14 @@ NPNトランジスタを中間に接続して、リレーの制御が出来る�
 センサーはアナログ値をRaspberry pi picoに送信します。
 土壌水分量の閾値は、実際に乾いた土と濡らした土によって調整しました。
 
-## SSD1306 OLED
-以下のページより、
-ssd1306.h
-ssd1306.c
-font.h
-の３ファイルをお借りしました。
-https://github.com/daschr/pico-ssd1306
+## 使用ライブラリ
+本プロジェクトでは、以下のオープンソースライブラリを使用しています。
+
+pico-ssd1306
+Author: daschr
+Repository: https://github.com/daschr/pico-ssd1306
+License: MIT License
+SSD1306 OLEDディスプレイの制御に使用しています。
 
 ## ここに接続図
 
