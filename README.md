@@ -30,8 +30,8 @@ NPNトランジスタを中間に接続して、リレーの制御が出来る�
 ## 使用ライブラリ
 本プロジェクトでは、以下のオープンソースライブラリを使用しています。
 
-pico-ssd1306/n
-Author: daschr/n
+pico-ssd1306\n
+Author: daschr\n
 Repository: https://github.com/daschr/pico-ssd1306
 License: MIT License
 SSD1306 OLEDディスプレイの制御に使用しています。
