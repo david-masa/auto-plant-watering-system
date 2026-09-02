@@ -56,9 +56,8 @@ int main()
     ssd1306_t disp;             //githubのexampleを参考
     disp.external_vcc=false;
     ssd1306_init(&disp, 128, 64, 0x3C, I2C_PORT);
-
-    ssd1306_clear(&disp);
-    ssd1306_show(&disp);
+    ssd1306_clear(&disp);   //画面クリア
+    ssd1306_show(&disp);    //画面に反映
 
 
     // リレー制御用GPIO
