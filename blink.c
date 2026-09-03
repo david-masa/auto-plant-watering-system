@@ -10,17 +10,9 @@
 
 #define SOIL_ADC_PIN 26      // GP26 = ADC0
 #define RELAY_PIN    15      // GP15　トランジスタにつながっているが、役割を明確にするためにリレーと表記
-
-// ==============================
-// 土壌水分の判定値
-// ==============================
-
-// 実測値
-// 乾いた土   : 3800～4095
-// 湿った土   : 1800～1900
-
-#define DRY_THRESHOLD  3000
-#define WET_THRESHOLD  2000
+    
+#define DRY_THRESHOLD  3500
+#define WET_THRESHOLD  2500
 
 #define PUMP_TIME_MS 2000   // ポンプ動作時間 2秒
 
