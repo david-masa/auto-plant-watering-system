@@ -91,7 +91,7 @@ SSD1306 OLEDディスプレイの制御に使用しています。<br>
 
 
 ## 熱収縮チューブを用いた防水処理
-<img width="300" height="400<img width="300" height="400" alt="PXL_20260903_112932439 MP" src="https://github.com/user-attachments/assets/67d52249-bdd0-4cd5-a3d7-3938b5951275" />
-" alt="PXL_20260903_112728157 MP" src="https://github.com/user-attachments/assets/1a9a1732-eb3f-4e08-b6cb-31d0fc6ef0e1" />
+<img width="300" height="400" alt="PXL_20260903_112932439 MP" src="https://github.com/user-attachments/assets/67d52249-bdd0-4cd5-a3d7-3938b5951275" />
+<img width="300" height="400" alt="PXL_20260903_112728157 MP" src="https://github.com/user-attachments/assets/1a9a1732-eb3f-4e08-b6cb-31d0fc6ef0e1" />
 
 
