@@ -25,22 +25,18 @@
 #define PUMP_TIME_MS 2000   // ポンプ動作時間 2秒
 
 // 測定間隔 6時間 = 6 × 60 × 60秒
-#define CHECK_INTERVAL_MS (6ULL * 60ULL * 60ULL * 1000ULL)
+#define CHECK_INTERVAL_MS (6ULL * 60ULL * 60ULL)
 
-// 今回のS8050回路では
-// GP15 HIGH → S8050 ON → INがGND → リレーON
-// GP15 LOW  → S8050 OFF → リレーOFF
+char buf[32];   //soil_valueのint型を文字列に変換するためのバッファ
 
-char buf[32];
+uint32_t seconds_counter = CHECK_INTERVAL_MS;  // 経過秒数をカウントする変数、初期値は6時間に設定
 
 //関数を定義、短いためプロトタイプ宣言ではなくそのまま定義する
-void pump_on(void)
-{
+void pump_on(void){
     gpio_put(RELAY_PIN, true);
 }
 
-void pump_off(void)
-{
+void pump_off(void){
     gpio_put(RELAY_PIN, false);
 }
 
@@ -74,61 +70,30 @@ int main()
 
     while (true)
     {
-        // --------------------------
-        // 土壌センサーを測定
-        // --------------------------
-
-        uint16_t soil_value = adc_read();
+        uint16_t soil_value = adc_read();   // ADCの値を読み取る、0～4095の範囲で返ってくる
 
         ssd1306_clear(&disp); // 前の表示を一度消去
-
         sprintf(buf, "Soil: %d", soil_value);
-
         ssd1306_draw_string(&disp, 0, 0, 2, buf);
-
         ssd1306_show(&disp);
 
-        // --------------------------
-        // 乾燥判定
-        // --------------------------
+        if (seconds_counter >= CHECK_INTERVAL_MS){
 
-        if (soil_value >= DRY_THRESHOLD)
-        {
-            // ポンプON
-            pump_on();
+            if (soil_value >= DRY_THRESHOLD){
+                pump_on();
+                sleep_ms(PUMP_TIME_MS);     // ポンプを動作させる時間だけ待機
+                pump_off();
+            }
+            else{
+                pump_off();
+            }
 
-            // 2秒間給水
-            sleep_ms(PUMP_TIME_MS);
-
-            // 必ずOFF
-            pump_off();
+            seconds_counter = 0;
         }
 
-        // --------------------------
-        // 湿っている
-        // --------------------------
+    sleep_ms(1000); 
+    seconds_counter++;
 
-        else if (soil_value <= WET_THRESHOLD)
-        {
-            pump_off();
-        }
-
-        // --------------------------
-        // 中間領域 チャタリング防止のため
-        // --------------------------
-
-        else
-        {
-            // 安全のためOFF
-            pump_off();
-        }
-
-
-        // --------------------------
-        // 次の測定まで6時間待つ
-        // --------------------------
-
-        sleep_ms(CHECK_INTERVAL_MS);
     }
 
     return 0;
