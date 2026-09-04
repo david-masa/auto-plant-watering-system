@@ -47,6 +47,10 @@ Raspberry Pi Picoと土壌湿度センサーを使用した自動植物給水シ
 | リレーモジュール COM | 単4ニッケル水素電池×4 の＋ |
 | リレーモジュール NO | 水中ポンプ＋ |
 | 水中ポンプ－ | 単4ニッケル水素電池×4 の－ | 
+| 6 (GP4 / SDA) | OLEDディスプレイ SSD1306 SDA |
+| 7 (GP5 / SCL) | OLEDディスプレイ SSD1306 SCL |
+| 36 (3.3V OUT) | OLEDディスプレイ SSD1306 VCC |
+| 38 (GND) | OLEDディスプレイ SSD1306 GND |
                  
 ## 配線図
 <img width="742" height="612" alt="自動水やり装置 drawio" src="https://github.com/user-attachments/assets/74709897-3893-491b-b159-ec1e91acb0b5" />
