@@ -3,8 +3,7 @@
 <img width="600" height="800" alt="overall" src="https://github.com/user-attachments/assets/dcc031c7-32a7-407d-b2d1-49b8b6ba00f1" /><br>
 ## 概要
 
-Raspberry Pi Picoと土壌湿度センサーを使用した<br>
-自動植物給水システムです。
+Raspberry Pi Picoと土壌湿度センサーを使用した自動植物給水システムです。
 
 土壌湿度センサーからアナログ値を定期的に取得し、<br>
 設定した閾値を下回った場合に給水ポンプを動作させます。<br>
@@ -21,15 +20,7 @@ Raspberry Pi Picoと土壌湿度センサーを使用した<br>
 4. リレーを介して給水ポンプを一定時間動作させる<br>
 5. ポンプを停止し、一定時間後に再度測定する<br>
 
-## 目的
 
-- Raspberry Pi Picoを使用した組み込み制御の実践<br>
-- アナログセンサーの値の取得<br>
-- トランジスタを使用したリレー制御<br>
-- センサー入力に応じたDCポンプ制御<br>
-
-## 配線図
-<img width="742" height="612" alt="自動水やり装置 drawio" src="https://github.com/user-attachments/assets/7ac59af7-66ae-43e9-b0a7-e439570ae7cc" />
 
 
 ## 🛠 パーツリスト
@@ -64,20 +55,13 @@ Raspberry Pi Picoと土壌湿度センサーを使用した<br>
 | リレーモジュール NO | 水中ポンプ＋ |
 | 水中ポンプ－ | 単4ニッケル水素電池×4 の－ | 
                  
+## 配線図
+<img width="742" height="612" alt="自動水やり装置 drawio" src="https://github.com/user-attachments/assets/7ac59af7-66ae-43e9-b0a7-e439570ae7cc" />
+<img width="800" height="600" alt="circuit" src="https://github.com/user-attachments/assets/cfb39c06-6532-4e87-a9ab-f8cff7c5984e" /><br>
 
-
-## 電源：
-Raspberry pi picoは3.7vの18650バッテリーにて電源を供給しています。<br>
-またDCポンプは単4ニッケル水素電池4本で電源を供給しています。
-
-## ポンプ制御：
-リレーによりDCポンプのオンオフを制御しています。<br>
-Raspberry Pi pico単体ではリレーの制御ができなかったため、<br>
-NPNトランジスタを中間に接続して、リレーの制御が出来るようにしました。
-
-## 土壌センサ：
-センサーはアナログ値をRaspberry pi picoに送信します。<br>
-土壌水分量の閾値は、実際に乾いた土と濡らした土によって調整しました。
+## 熱収縮チューブを用いた防水処理
+<img width="300" height="400" alt="PXL_20260903_112728157 MP" src="https://github.com/user-attachments/assets/1a9a1732-eb3f-4e08-b6cb-31d0fc6ef0e1" />
+<img width="300" height="400" alt="PXL_20260903_112932439 MP" src="https://github.com/user-attachments/assets/67d52249-bdd0-4cd5-a3d7-3938b5951275" />
 
 ## 使用ライブラリ
 本プロジェクトでは、以下のオープンソースライブラリを使用しています。
@@ -87,13 +71,3 @@ Author: daschr<br>
 Repository: https://github.com/daschr/pico-ssd1306<br>
 License: MIT License<br>
 SSD1306 OLEDディスプレイの制御に使用しています。<br>
-
-## ここに接続図
-
-
-## 熱収縮チューブを用いた防水処理
-<img width="300" height="400" alt="PXL_20260903_112728157 MP" src="https://github.com/user-attachments/assets/1a9a1732-eb3f-4e08-b6cb-31d0fc6ef0e1" />
-<img width="300" height="400" alt="PXL_20260903_112932439 MP" src="https://github.com/user-attachments/assets/67d52249-bdd0-4cd5-a3d7-3938b5951275" />
-
-
-
