@@ -28,7 +28,7 @@ Raspberry Pi Picoと土壌湿度センサーを使用した<br>
 - トランジスタを使用したリレー制御<br>
 - センサー入力に応じたDCポンプ制御<br>
 
-## ここに回路図
+## 配線図
 <img width="742" height="612" alt="自動水やり装置 drawio" src="https://github.com/user-attachments/assets/7ac59af7-66ae-43e9-b0a7-e439570ae7cc" />
 
 
