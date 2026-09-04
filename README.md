@@ -49,7 +49,7 @@ Raspberry Pi Picoと土壌湿度センサーを使用した自動植物給水シ
 | 水中ポンプ－ | 単4ニッケル水素電池×4 の－ | 
                  
 ## 配線図
-<img width="742" height="612" alt="自動水やり装置 drawio" src="https://github.com/user-attachments/assets/7ac59af7-66ae-43e9-b0a7-e439570ae7cc" />
+<img width="742" height="612" alt="自動水やり装置 drawio" src="https://github.com/user-attachments/assets/74709897-3893-491b-b159-ec1e91acb0b5" />
 <img width="800" height="600" alt="circuit" src="https://github.com/user-attachments/assets/cfb39c06-6532-4e87-a9ab-f8cff7c5984e" /><br>
 
 ## 熱収縮チューブを用いた防水処理
