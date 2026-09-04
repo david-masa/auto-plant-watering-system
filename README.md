@@ -34,8 +34,6 @@ Raspberry Pi Picoと土壌湿度センサーを使用した自動植物給水シ
 | **その他** | ブレッドボード、配線、1kΩ抵抗、熱収縮チューブ |
 
 ## 配線
-<img width="800" height="600" alt="circuit" src="https://github.com/user-attachments/assets/cfb39c06-6532-4e87-a9ab-f8cff7c5984e" /><br>
-
 | ピン番号 | 接続先 |
 |---:|---|
 | 31 (GP26 / ADC0) | 土壌水分センサー AO |
