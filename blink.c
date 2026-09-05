@@ -17,7 +17,8 @@
 #define DRY_THRESHOLD  3500
 #define WET_THRESHOLD  2500
 
-#define PUMP_TIME_MS 2000   // ポンプ動作時間 2秒
+#define PUMP_TIME_MS 3000   // ポンプ動作時間 3秒
+#define TEMP_PUMP_TIME_MS 1000   // ポンプ動作時間 1秒
 
 // 測定間隔 6時間 = 6 × 60 × 60秒
 #define CHECK_INTERVAL_MS (6ULL * 60ULL * 60ULL * 1000ULL)  // 6時間をミリ秒に変換
@@ -100,7 +101,22 @@ int main()
             }
         }
 
-       
+        if(gpio_get(BUTTON_RIGHT) == 0){ 
+            sleep_ms(20);       //右ボタンが押されたら
+            
+            if(gpio_get(BUTTON_RIGHT) == 0){   //チャタリング対策
+                pump_on();
+                sleep_ms(TEMP_PUMP_TIME_MS);     // ポンプを動作させる時間だけ待機
+                pump_off();
+            }
+            else{
+                pump_off();
+            }
+
+            while(gpio_get(BUTTON_RIGHT) == 0){
+                sleep_ms(10);   //チャタリング対策
+            }  
+        }
 
         if (ms_counter >= CHECK_INTERVAL_MS){
 
