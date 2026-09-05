@@ -20,11 +20,11 @@
 #define PUMP_TIME_MS 2000   // ポンプ動作時間 2秒
 
 // 測定間隔 6時間 = 6 × 60 × 60秒
-#define CHECK_INTERVAL_MS (6ULL * 60ULL * 60ULL)
+#define CHECK_INTERVAL_MS (6ULL * 60ULL * 60ULL * 1000ULL)  // 6時間をミリ秒に変換
 
 char buf[32];   //soil_valueのint型を文字列に変換するためのバッファ
 
-uint32_t seconds_counter = 0;  // 経過秒数をカウントする変数、初期値は０に設定
+uint64_t ms_counter = 0;  // 経過秒数をカウントする変数、初期値は０に設定
 
 //関数を定義、短いためプロトタイプ宣言ではなくそのまま定義する
 void pump_on(void){
@@ -78,7 +78,7 @@ int main()
     {
 
         if(gpio_get(BUTTON_LEFT) == 0){ 
-            sleep_ms(50);       //左ボタンが押されたら
+            sleep_ms(20);       //左ボタンが押されたら
             
             if(gpio_get(BUTTON_LEFT) == 0){   //チャタリング対策
 
@@ -102,7 +102,7 @@ int main()
 
        
 
-        if (seconds_counter >= CHECK_INTERVAL_MS){
+        if (ms_counter >= CHECK_INTERVAL_MS){
 
             uint16_t soil_value = adc_read();   // ADCの値を読み取る、0～4095の範囲で返ってくる
 
@@ -115,11 +115,11 @@ int main()
                 pump_off();
             }
 
-            seconds_counter = 0;
+            ms_counter = 0;
         }
 
-    sleep_ms(1000); 
-    seconds_counter++;
+    sleep_ms(10); 
+    ms_counter += 10;
     }
     return 0;
 }
