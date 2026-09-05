@@ -24,7 +24,7 @@
 
 char buf[32];   //soil_valueのint型を文字列に変換するためのバッファ
 
-uint32_t seconds_counter = CHECK_INTERVAL_MS;  // 経過秒数をカウントする変数、初期値は6時間に設定
+uint32_t seconds_counter = 0;  // 経過秒数をカウントする変数、初期値は０に設定
 
 //関数を定義、短いためプロトタイプ宣言ではなくそのまま定義する
 void pump_on(void){
