@@ -1,8 +1,11 @@
 #include <stdio.h>
-#include "pico/stdlib.h"    //picoの標準ライブラリ
+#include "pico/stdlib.h"    //picoの標準ライブラリ GPIOやUART,sleepmsなどが使える
 #include "hardware/adc.h"   //picoのADCライブラリ
 #include "hardware/i2c.h"   //picoのI2Cライブラリ
 #include "ssd1306.h"        //OLEDディスプレイ用ライブラリ (参照:https://github.com/daschr/pico-ssd1306)
+
+#define BUTTON_LEFT  16     // GP16ボタン
+#define BUTTON_RIGHT 17     // GP17ボタン
 
 #define I2C_PORT i2c0       // 使用するI2C通信回路の指定（0番を使用）
 #define PIN_SDA 4           // GP4をSDAに使用
@@ -35,6 +38,17 @@ void pump_off(void){
 int main()
 {
     stdio_init_all();
+
+    //左ボタン (GP16) の初期化
+    gpio_init(BUTTON_LEFT);
+    gpio_set_dir(BUTTON_LEFT, GPIO_IN);
+    gpio_pull_up(BUTTON_LEFT);
+
+    //右ボタン (GP17) の初期化
+    gpio_init(BUTTON_RIGHT);
+    gpio_set_dir(BUTTON_RIGHT, GPIO_IN);
+    gpio_pull_up(BUTTON_RIGHT);
+
     i2c_init(i2c0, 400 * 1000);     // I2C通信の初期化、400kHzで通信 
     gpio_set_function(PIN_SDA, GPIO_FUNC_I2C);      //I2Cを使えるようにするための初期化
     gpio_set_function(PIN_SCL, GPIO_FUNC_I2C);      //I2Cを使えるようにするための初期化
