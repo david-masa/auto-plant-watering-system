@@ -76,14 +76,35 @@ int main()
 
     while (true)
     {
-        uint16_t soil_value = adc_read();   // ADCの値を読み取る、0～4095の範囲で返ってくる
 
-        ssd1306_clear(&disp); // 前の表示を一度消去
-        sprintf(buf, "Soil: %d", soil_value);
-        ssd1306_draw_string(&disp, 0, 0, 2, buf);
-        ssd1306_show(&disp);
+        if(gpio_get(BUTTON_LEFT) == 0){ 
+            sleep_ms(50);       //左ボタンが押されたら
+            
+            if(gpio_get(BUTTON_LEFT) == 0){   //チャタリング対策
+
+                uint16_t soil_value = adc_read();   // ADCの値を読み取る、0～4095の範囲で返ってくる
+
+                ssd1306_clear(&disp); // 前の表示を一度消去
+                sprintf(buf, "Soil: %d", soil_value);
+                ssd1306_draw_string(&disp, 0, 0, 2, buf);
+                ssd1306_show(&disp);
+
+                sleep_ms(3000); // 3秒間表示を維持
+
+                ssd1306_clear(&disp); // 表示を消去
+                ssd1306_show(&disp);  // 画面に反映
+
+                while(gpio_get(BUTTON_LEFT) == 0){
+                    sleep_ms(10);   //チャタリング対策
+                }  
+            }
+        }
+
+       
 
         if (seconds_counter >= CHECK_INTERVAL_MS){
+
+            uint16_t soil_value = adc_read();   // ADCの値を読み取る、0～4095の範囲で返ってくる
 
             if (soil_value >= DRY_THRESHOLD){
                 pump_on();
@@ -99,8 +120,6 @@ int main()
 
     sleep_ms(1000); 
     seconds_counter++;
-
     }
-
     return 0;
 }
