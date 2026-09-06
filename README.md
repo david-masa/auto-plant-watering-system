@@ -1,6 +1,6 @@
 
 # Raspberry Pi picoを使用した自動植物給水システム
-<img width="600" height="800" alt="overall" src="https://github.com/user-attachments/assets/dcc031c7-32a7-407d-b2d1-49b8b6ba00f1" /><br>
+<img width="600" height="800" alt="PXL_20260906_053825612" src="https://github.com/user-attachments/assets/b3afdaae-24b4-45d2-8552-eea625a1e893" /><br>
 ## 概要
 
 Raspberry Pi Picoと土壌湿度センサーを使用した自動植物給水システムです。
@@ -55,6 +55,10 @@ Raspberry Pi Picoと土壌湿度センサーを使用した自動植物給水シ
 ## 配線図
 <img width="742" height="612" alt="自動水やり装置 drawio" src="https://github.com/user-attachments/assets/74709897-3893-491b-b159-ec1e91acb0b5" />
 <img width="800" height="600" alt="circuit" src="https://github.com/user-attachments/assets/cfb39c06-6532-4e87-a9ab-f8cff7c5984e" /><br>
+
+## 左ボタン押下で現在の土壌湿度レベルを３秒間表示
+<img width="400" height="225" alt="左ボタン操作" src="https://github.com/user-attachments/assets/726ff29e-1038-4877-ada2-7a23dc7cae41" />
+
 
 ## 熱収縮チューブを用いた防水処理
 <img width="300" height="400" alt="PXL_20260903_112728157 MP" src="https://github.com/user-attachments/assets/1a9a1732-eb3f-4e08-b6cb-31d0fc6ef0e1" />
