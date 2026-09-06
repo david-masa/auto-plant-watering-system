@@ -86,8 +86,11 @@ int main()
                 uint16_t soil_value = adc_read();   // ADCの値を読み取る、0～4095の範囲で返ってくる
 
                 ssd1306_clear(&disp); // 前の表示を一度消去
+                ssd1306_draw_string(&disp, 0, 0,  1, "+-------------------+"); 
+                ssd1306_draw_string(&disp, 0, 56, 1, "+-------------------+"); 
                 sprintf(buf, "Soil: %d", soil_value);
-                ssd1306_draw_string(&disp, 0, 0, 2, buf);
+                ssd1306_draw_string(&disp, 0, 12, 2, "SUPER DRY");
+                ssd1306_draw_string(&disp, 0, 36, 2, buf);
                 ssd1306_show(&disp);
 
                 sleep_ms(3000); // 3秒間表示を維持
