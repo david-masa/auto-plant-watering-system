@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "pico/stdlib.h"    //picoの標準ライブラリ GPIOやUART,sleepmsなどが使える
 #include "hardware/adc.h"   //picoのADCライブラリ
 #include "hardware/i2c.h"   //picoのI2Cライブラリ
@@ -85,11 +86,20 @@ int main()
 
                 uint16_t soil_value = adc_read();   // ADCの値を読み取る、0～4095の範囲で返ってくる
 
+                char soil_status[16];
+                if(soil_value >= DRY_THRESHOLD){
+                    strcpy(soil_status, "SUPER DRY");
+                } else if (soil_value <= WET_THRESHOLD){
+                    strcpy(soil_status, "   WET   ");
+                } else {
+                    strcpy(soil_status, "   DRY   ");
+                }
+
                 ssd1306_clear(&disp); // 前の表示を一度消去
                 ssd1306_draw_string(&disp, 0, 0,  1, "+-------------------+"); 
                 ssd1306_draw_string(&disp, 0, 56, 1, "+-------------------+"); 
                 sprintf(buf, "Soil: %d", soil_value);
-                ssd1306_draw_string(&disp, 0, 12, 2, "SUPER DRY");
+                ssd1306_draw_string(&disp, 0, 12, 2, soil_status);
                 ssd1306_draw_string(&disp, 0, 36, 2, buf);
                 ssd1306_show(&disp);
 
