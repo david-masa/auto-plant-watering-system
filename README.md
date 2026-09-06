@@ -18,6 +18,12 @@ Raspberry Pi Picoと土壌湿度センサーを使用した自動植物給水シ
 4. リレーを介して給水ポンプを一定時間動作させる<br>
 5. ポンプを停止し、一定時間後に再度測定する<br>
 
+## 左ボタン押下で現在の土壌湿度レベルを３秒間表示
+<img width="400" height="225" alt="左ボタン操作" src="https://github.com/user-attachments/assets/726ff29e-1038-4877-ada2-7a23dc7cae41" />
+
+## 右ボタン押下で水中ポンプを１秒間テスト
+<img width="400" height="711" alt="右ボタン操作 " src="https://github.com/user-attachments/assets/ec221efb-99fb-4706-9b31-323f893589a6" />
+
 ## 🛠 パーツリスト
 
 | 部品名 | 用途・詳細 |
@@ -54,13 +60,6 @@ Raspberry Pi Picoと土壌湿度センサーを使用した自動植物給水シ
                  
 ## 配線図
 <img width="742" height="612" alt="自動水やり装置 drawio" src="https://github.com/user-attachments/assets/74709897-3893-491b-b159-ec1e91acb0b5" />
-<img width="800" height="600" alt="circuit" src="https://github.com/user-attachments/assets/cfb39c06-6532-4e87-a9ab-f8cff7c5984e" /><br>
-
-## 左ボタン押下で現在の土壌湿度レベルを３秒間表示
-<img width="400" height="225" alt="左ボタン操作" src="https://github.com/user-attachments/assets/726ff29e-1038-4877-ada2-7a23dc7cae41" />
-
-## 右ボタン押下で水中ポンプを１秒間テスト
-<img width="400" height="711" alt="右ボタン操作 " src="https://github.com/user-attachments/assets/ec221efb-99fb-4706-9b31-323f893589a6" />
 
 ## 使用ライブラリ
 本プロジェクトでは、以下のオープンソースライブラリを使用しています。
