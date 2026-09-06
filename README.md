@@ -59,10 +59,8 @@ Raspberry Pi Picoと土壌湿度センサーを使用した自動植物給水シ
 ## 左ボタン押下で現在の土壌湿度レベルを３秒間表示
 <img width="400" height="225" alt="左ボタン操作" src="https://github.com/user-attachments/assets/726ff29e-1038-4877-ada2-7a23dc7cae41" />
 
-
-## 熱収縮チューブを用いた防水処理
-<img width="300" height="400" alt="PXL_20260903_112728157 MP" src="https://github.com/user-attachments/assets/1a9a1732-eb3f-4e08-b6cb-31d0fc6ef0e1" />
-<img width="300" height="400" alt="PXL_20260903_112932439 MP" src="https://github.com/user-attachments/assets/67d52249-bdd0-4cd5-a3d7-3938b5951275" />
+## 右ボタン押下で水中ポンプを１秒間テスト
+<img width="400" height="711" alt="右ボタン操作 " src="https://github.com/user-attachments/assets/ec221efb-99fb-4706-9b31-323f893589a6" />
 
 ## 使用ライブラリ
 本プロジェクトでは、以下のオープンソースライブラリを使用しています。
