@@ -1,9 +1,9 @@
 
-# Raspberry Pi Picoを使用した自動植物給水システム
+# Raspberry Pi Picoを使用した自動給水システム
 <img width="600" height="800" alt="PXL_20260906_053825612" src="https://github.com/user-attachments/assets/b3afdaae-24b4-45d2-8552-eea625a1e893" /><br>
 
 ## 概要
-Raspberry Pi Picoと土壌湿度センサーを使用した自動植物給水システムです。
+Raspberry Pi Picoと土壌湿度センサーを使用した自動給水システムです。
 
 土壌湿度センサーから土壌水分量の値を6時間ごとに取得し、<br>
 設定した閾値を下回った場合に給水ポンプを3秒間動作させます。<br>
