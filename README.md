@@ -31,7 +31,7 @@ Raspberry Pi Picoと土壌湿度センサーを使用した自動給水システ
 |土壌水分量|センサの値|表示名|
 |---:|---|---|
 |25%以下|x >= 3500|SUPER DRY|
-|25%~75%|2500 < X < 3500|DRY|
+|25%~75%|2500 < x < 3500|DRY|
 |75%以上|x <= 2500|WET|
 
 <img width="400" height="225" alt="左ボタン操作" src="https://github.com/user-attachments/assets/726ff29e-1038-4877-ada2-7a23dc7cae41" />
