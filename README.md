@@ -35,6 +35,8 @@ Raspberry Pi Picoと土壌湿度センサーを使用した自動給水システ
 |25%以下|x >= 3500|SUPER DRY|
 |25%~75%|2500 < x < 3500|DRY|
 |75%以上|x <= 2500|WET|
+* xを土壌湿度の値とする。
+また値が4000で湿度0%、2000で湿度100%として計算しています。
 
 右ボタン押下時：水中ポンプを1秒間だけ動作させて停止する。
 <img width="400" height="711" alt="右ボタン操作 " src="https://github.com/user-attachments/assets/ec221efb-99fb-4706-9b31-323f893589a6" />
