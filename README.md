@@ -1,9 +1,9 @@
 
-# Raspberry Pi Picoを使用した自動給水システム
+# Raspberry Pi Picoを使用した自動水やり装置
 <img width="600" height="800" alt="PXL_20260906_053825612" src="https://github.com/user-attachments/assets/b3afdaae-24b4-45d2-8552-eea625a1e893" /><br>
 
 ## 概要
-Raspberry Pi Picoと土壌湿度センサーを使用した自動給水システムです。
+Raspberry Pi Picoと土壌湿度センサーを使用した自動水やり装置です。
 
 土壌湿度センサーから土壌水分量の値を6時間ごとに取得し、<br>
 設定した閾値を下回った場合に給水ポンプを3秒間動作させます。<br>
@@ -53,16 +53,6 @@ Raspberry Pi Picoと土壌湿度センサーを使用した自動給水システ
 
 ### 2. 電源系統の分離によるノイズ・電圧降下対策
 * 水中ポンプ動作時のノイズや急速な電圧降下によりRaspberry Pi Picoが一時的に電源オフになるような影響を防ぐため、マイコン用電源と水中ポンプ駆動用電源の系統を物理的に分離しました。
-
-### 3.delayを使ったタイマーカウント
-* 現在は<br>
-sleep_ms(10); <br>
-ms_counter += 10; //uint64_t ms_counter = 0;として設定<br>
-と記載しています。<br>
-もとはsleep_ms(1000);で設定していましたが、ボタンの反応速度が遅かったので現在の記載方法に変更しています。<br>
-
-ただ10m秒ごとにループを回すことになり消費電力が高くなるので、<br>
-ディープスリープ機能のようなものを実装して、割り込み機能で起こすようなシステムに出来るか調べて改修予定です。<br>
 
 ## ブロック図
 <img width="902" height="482" alt="水やり装置　ブロック図 drawio" src="https://github.com/user-attachments/assets/7b113203-999e-4774-be42-69dba9f55422" />
