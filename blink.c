@@ -25,8 +25,6 @@
 // 測定間隔 6時間 = 6 × 60 × 60秒
 #define CHECK_INTERVAL_MS (6ULL * 60ULL * 60ULL * 1000ULL)  // 6時間をミリ秒に変換
 
-char buf[32];   //soil_valueのint型を文字列に変換するためのバッファ
-
 uint64_t ms_counter = 0;  // 経過ミリ秒数をカウントする変数、初期値は０に設定
 
 //関数を定義、短いためプロトタイプ宣言ではなくそのまま定義する
@@ -87,7 +85,9 @@ int main()
 
                 uint16_t soil_value = adc_read();   // ADCの値を読み取る、0～4095の範囲で返ってくる
 
+                char buf[32];   //soil_valueのint型を文字列に変換するためのバッファ
                 char soil_status[16];
+                
                 if(soil_value >= DRY_THRESHOLD){
                     strcpy(soil_status, "SUPER DRY");
                 } else if (soil_value <= WET_THRESHOLD){
