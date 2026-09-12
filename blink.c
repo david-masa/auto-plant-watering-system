@@ -4,6 +4,7 @@
 #include "hardware/adc.h"   //picoのADCライブラリ
 #include "hardware/i2c.h"   //picoのI2Cライブラリ
 #include "ssd1306.h"        //OLEDディスプレイ用ライブラリ (参照:https://github.com/daschr/pico-ssd1306)
+#include "hardware/gpio.h"  //picoのGPIOライブラリ,割り込み機能などを使うために必要
 
 #define BUTTON_LEFT  16     // GP16ボタン
 #define BUTTON_RIGHT 17     // GP17ボタン
