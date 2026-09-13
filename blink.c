@@ -62,7 +62,6 @@ int main()
     ssd1306_clear(&disp);   //画面クリア
     ssd1306_show(&disp);    //画面に反映
 
-
     // リレー制御用GPIO
     gpio_init(RELAY_PIN);
     gpio_set_dir(RELAY_PIN, GPIO_OUT);
@@ -87,7 +86,7 @@ int main()
 
                 char buf[32];   //soil_valueのint型を文字列に変換するためのバッファ
                 char soil_status[16];
-                
+
                 if(soil_value >= DRY_THRESHOLD){
                     strcpy(soil_status, "SUPER DRY");
                 } else if (soil_value <= WET_THRESHOLD){
