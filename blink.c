@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#include <stdio.h>          //標準入出力用のライブラリ、printfを使うために必要
+#include <string.h>         //文字列操作用のライブラリ、strcpyやsprintfを使うために必要
 #include "pico/stdlib.h"    //picoの標準ライブラリ GPIOやUART,sleepmsなどが使える
 #include "hardware/adc.h"   //picoのADCライブラリ
 #include "hardware/i2c.h"   //picoのI2Cライブラリ
@@ -16,8 +16,8 @@
 #define SOIL_ADC_PIN 26      // GP26 = ADC0
 #define RELAY_PIN    15      // GP15　トランジスタにつながっているが、役割を明確にするためにリレーと表記
     
-#define DRY_THRESHOLD  3500
-#define WET_THRESHOLD  2500
+#define DRY_THRESHOLD  3500     // 乾燥状態の閾値、ADCの値がこの値以上なら乾燥状態と判断
+#define WET_THRESHOLD  2500     // 湿った状態の閾値、ADCの値がこの値以下なら湿潤状態と判断
 
 #define PUMP_TIME_MS 3000   // ポンプ動作時間 3秒
 #define TEMP_PUMP_TIME_MS 1000   // ポンプ動作時間 1秒
@@ -29,11 +29,11 @@ uint64_t ms_counter = 0;  // 経過ミリ秒数をカウントする変数、初
 
 //関数を定義、短いためプロトタイプ宣言ではなくそのまま定義する
 void pump_on(void){
-    gpio_put(RELAY_PIN, true);
+    gpio_put(RELAY_PIN, true);      // ポンプをONにする
 }
 
 void pump_off(void){
-    gpio_put(RELAY_PIN, false);
+    gpio_put(RELAY_PIN, false);     // ポンプをOFFにする
 }
 
 int main()
@@ -41,14 +41,14 @@ int main()
     stdio_init_all();
 
     //左ボタン (GP16) の初期化
-    gpio_init(BUTTON_LEFT);
-    gpio_set_dir(BUTTON_LEFT, GPIO_IN);
-    gpio_pull_up(BUTTON_LEFT);
+    gpio_init(BUTTON_LEFT);     //GPIOの初期化
+    gpio_set_dir(BUTTON_LEFT, GPIO_IN);     //入力に設定
+    gpio_pull_up(BUTTON_LEFT);      //内部抵抗を使ってプルアップする
 
     //右ボタン (GP17) の初期化
-    gpio_init(BUTTON_RIGHT);
-    gpio_set_dir(BUTTON_RIGHT, GPIO_IN);
-    gpio_pull_up(BUTTON_RIGHT);
+    gpio_init(BUTTON_RIGHT);        //GPIOの初期化
+    gpio_set_dir(BUTTON_RIGHT, GPIO_IN);        //入力に設定
+    gpio_pull_up(BUTTON_RIGHT);     //内部抵抗を使ってプルアップする
 
     i2c_init(i2c0, 400 * 1000);     // I2C通信の初期化、400kHzで通信 
     gpio_set_function(PIN_SDA, GPIO_FUNC_I2C);      //I2Cを使えるようにするための初期化
@@ -57,7 +57,7 @@ int main()
     gpio_pull_up(PIN_SCL);      //内部抵抗を使ってプルアップする
 
     ssd1306_t disp;             //githubのexampleを参考
-    disp.external_vcc=false;
+    disp.external_vcc=false;        //OLEDディスプレイの電源は外部から供給されるためfalseに設定
     ssd1306_init(&disp, 128, 64, 0x3C, I2C_PORT);
     ssd1306_clear(&disp);   //画面クリア
     ssd1306_show(&disp);    //画面に反映
@@ -98,10 +98,10 @@ int main()
                 ssd1306_clear(&disp); // 前の表示を一度消去
                 ssd1306_draw_string(&disp, 0, 0,  1, "+-------------------+"); 
                 ssd1306_draw_string(&disp, 0, 56, 1, "+-------------------+"); 
-                sprintf(buf, "Soil: %d", soil_value);
-                ssd1306_draw_string(&disp, 0, 12, 2, soil_status);
+                sprintf(buf, "Soil: %d", soil_value);                           // soil_valueを文字列に変換してbufに格納
+                ssd1306_draw_string(&disp, 0, 12, 2, soil_status);              
                 ssd1306_draw_string(&disp, 0, 36, 2, buf);
-                ssd1306_show(&disp);
+                ssd1306_show(&disp);                                            // 画面に反映
 
                 sleep_ms(3000); // 3秒間表示を維持
 
@@ -148,7 +148,7 @@ int main()
         }
 
     sleep_ms(10); 
-    ms_counter += 10;
+    ms_counter += 10;                           // 10ミリ秒ごとにカウンターを増加させる
     }
     return 0;
 }
