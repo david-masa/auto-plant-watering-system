@@ -29,7 +29,7 @@ Raspberry Pi Picoと土壌湿度センサーを使用した自動水やり装置
 
 手動操作
 
-左ボタン押下時：現在の土壌湿度レベルを測定し、モニタに（SUPER DRY / DRY / WET）の3種類の中から表示する。
+左ボタン押下時：現在の土壌湿度レベルを測定し、モニタに表示する。
 <img width="400" height="225" alt="左ボタン操作" src="https://github.com/user-attachments/assets/726ff29e-1038-4877-ada2-7a23dc7cae41" />
 
 |土壌水分量|センサの値|表示名|
