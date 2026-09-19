@@ -63,16 +63,16 @@ int main()
     ssd1306_show(&disp);    //画面に反映
 
     // リレー制御用GPIO
-    gpio_init(RELAY_PIN);
-    gpio_set_dir(RELAY_PIN, GPIO_OUT);
+    gpio_init(RELAY_PIN);           // GPIOの初期化
+    gpio_set_dir(RELAY_PIN, GPIO_OUT);  // 出力に設定
 
     // 起動時は必ずポンプOFF
     pump_off();
 
     // ADC初期化
-    adc_init();
+    adc_init();                     // ADCの初期化
     adc_gpio_init(SOIL_ADC_PIN);    //ADCを使えるようにするための初期化
-    adc_select_input(0);
+    adc_select_input(0);            // ADC0を使用するように設定
 
     while (true)
     {
