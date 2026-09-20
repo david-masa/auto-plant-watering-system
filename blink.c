@@ -85,7 +85,7 @@ int main()
                 uint16_t soil_value = adc_read();   // ADCの値を読み取る、0～4095の範囲で返ってくる
 
                 char buf[32];   //soil_valueのint型を文字列に変換するためのバッファ
-                char soil_status[16];
+                char soil_status[16];   
 
                 if(soil_value >= DRY_THRESHOLD){
                     strcpy(soil_status, "SUPER DRY");
@@ -131,7 +131,7 @@ int main()
             }  
         }
 
-        if (ms_counter >= CHECK_INTERVAL_MS){
+        if (ms_counter >= CHECK_INTERVAL_MS){       // 6時間ごとに土壌の水分量をチェックする
 
             uint16_t soil_value = adc_read();   // ADCの値を読み取る、0～4095の範囲で返ってくる
 
