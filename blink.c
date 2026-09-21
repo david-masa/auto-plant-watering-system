@@ -135,16 +135,16 @@ int main()
 
             uint16_t soil_value = adc_read();   // ADCの値を読み取る、0～4095の範囲で返ってくる
 
-            if (soil_value >= DRY_THRESHOLD){
-                pump_on();
+            if (soil_value >= DRY_THRESHOLD){       // 土壌が乾燥している場合、ポンプを動作させる
+                pump_on();                  // ポンプをONにする
                 sleep_ms(PUMP_TIME_MS);     // ポンプを動作させる時間だけ待機
-                pump_off();
+                pump_off();                 // ポンプをOFFにする
             }
             else{
-                pump_off();
+                pump_off();                 // 土壌が湿っている場合、ポンプをOFFにする
             }
 
-            ms_counter = 0;
+            ms_counter = 0;                 // カウンターをリセットして次の6時間の計測を開始する
         }
 
     sleep_ms(10); 
