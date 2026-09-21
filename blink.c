@@ -118,15 +118,15 @@ int main()
             sleep_ms(20);       //右ボタンが押されたら
             
             if(gpio_get(BUTTON_RIGHT) == 0){   //チャタリング対策
-                pump_on();
+                pump_on();                      // ポンプをONにする
                 sleep_ms(TEMP_PUMP_TIME_MS);     // ポンプを動作させる時間だけ待機
-                pump_off();
+                pump_off();                     // ポンプをOFFにする
             }
             else{
                 pump_off();
             }
 
-            while(gpio_get(BUTTON_RIGHT) == 0){
+            while(gpio_get(BUTTON_RIGHT) == 0){     
                 sleep_ms(10);   //チャタリング対策
             }  
         }
@@ -147,7 +147,7 @@ int main()
             ms_counter = 0;                 // カウンターをリセットして次の6時間の計測を開始する
         }
 
-    sleep_ms(10); 
+    sleep_ms(10);                               
     ms_counter += 10;                           // 10ミリ秒ごとにカウンターを増加させる
     }
     return 0;
