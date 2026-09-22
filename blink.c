@@ -36,7 +36,7 @@ void pump_off(void){
     gpio_put(RELAY_PIN, false);     // ポンプをOFFにする
 }
 
-int main()
+int main()                          // main関数の開始
 {
     stdio_init_all();
 
