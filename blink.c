@@ -150,5 +150,5 @@ int main()                          // main関数の開始
     sleep_ms(10);                               
     ms_counter += 10;                           // 10ミリ秒ごとにカウンターを増加させる
     }
-    return 0;
+    return 0;                                   // main関数の終了
 }
